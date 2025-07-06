@@ -45,3 +45,24 @@ The COUNT(b.booking_id) function counts the number of bookings for each property
 The RANK() window function assigns a rank to each property based on the total number of bookings, with the highest number of bookings receiving the highest rank.
 The GROUP BY clause groups the results by property ID, name, and description to aggregate the booking counts.
 The results are optionally ordered by the booking rank.
+
+RANK() vs ROW_NUMBER():
+
+RANK() will assign the same rank to properties with the same number of bookings (leaving gaps in rank numbers)
+ROW_NUMBER() always gives a unique sequential number (no gaps, no duplicates)
+Tiebreaker Logic Added:
+
+I included p.property_id as a second ordering criteria in the ROW_NUMBER() function to ensure deterministic ordering when properties have the same booking count
+What This Shows:
+
+Properties with identical booking counts will have:
+The same booking_rank value
+Different booking_row_num values (ensuring uniqueness)
+Practical Use:
+
+RANK() is better for "official" rankings where ties should be shown
+ROW_NUMBER() is better when you need to assign unique positions regardless of ties
+Performance Note:
+
+Both window functions execute in the same pass over the data
+No additional performance overhead from including both functions
