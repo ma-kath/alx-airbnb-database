@@ -24,3 +24,13 @@ Address performance challenges with large datasets by implementing table partiti
 Learners monitor query performance using SHOW PROFILE and EXPLAIN ANALYZE, identify bottlenecks, and propose schema changes. Practical tasks include implementing these adjustments and documenting results.
 
 This comprehensive task flow ensures you learn not only to write efficient SQL queries but also to think strategically about database design and optimization. The goal is to prepare you for real-world database challenges in high-performance applications.
+
+### Task 1
+First Query:
+The outer query selects properties from the Property table.
+The subquery calculates the average rating for each property by filtering reviews based on the property_id. It checks if the average rating is greater than 4.0.
+Second Query:
+The outer query selects users from the User  table.
+The correlated subquery counts the number of bookings for each user by filtering bookings based on the user_id. It checks if the count is greater than 3.
+
+### Task 2
