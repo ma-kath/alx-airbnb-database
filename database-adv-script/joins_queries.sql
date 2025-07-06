@@ -40,4 +40,7 @@ SELECT
 FROM 
     User u
 FULL OUTER JOIN 
-    Booking b ON u.user_id = b.user_id;
+    Booking b ON u.user_id = b.user_id
+ORDER BY 
+    u.last_name ASC,  
+    b.start_date ASC;
