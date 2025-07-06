@@ -16,3 +16,15 @@ CREATE INDEX idx_review_property_rating ON Review(property_id, rating);
 
 -- Composite index for messages (frequently queried by timestamp)
 CREATE INDEX idx_message_conversation ON Message(sender_id, recipient_id, sent_at);
+
+-- Sample query to analyze
+EXPLAIN ANALYZE
+SELECT p.*, u.first_name, u.last_name, AVG(r.rating) as avg_rating
+FROM Property p
+JOIN User u ON p.host_id = u.user_id
+JOIN Review r ON p.property_id = r.property_id
+WHERE p.price_per_night BETWEEN 50 AND 200
+  AND p.location LIKE '%New York%'
+GROUP BY p.property_id, u.first_name, u.last_name
+ORDER BY avg_rating DESC
+LIMIT 10;
