@@ -34,3 +34,14 @@ The outer query selects users from the User  table.
 The correlated subquery counts the number of bookings for each user by filtering bookings based on the user_id. It checks if the count is greater than 3.
 
 ### Task 2
+First Query:
+The LEFT JOIN is used to include all users, even those who have not made any bookings.
+The COUNT(b.booking_id) function counts the number of bookings for each user.
+The GROUP BY clause groups the results by user ID, first name, and last name to aggregate the booking counts.
+The results are optionally ordered by the total number of bookings in descending order.
+Second Query:
+The LEFT JOIN is used to include all properties, even those that have not received any bookings.
+The COUNT(b.booking_id) function counts the number of bookings for each property.
+The RANK() window function assigns a rank to each property based on the total number of bookings, with the highest number of bookings receiving the highest rank.
+The GROUP BY clause groups the results by property ID, name, and description to aggregate the booking counts.
+The results are optionally ordered by the booking rank.
